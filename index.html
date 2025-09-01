@@ -1,10 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Samama Yaseen | 2D Game Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Samama Yaseen, 2D Unity Game Developer specializing in mobile games, gameplay scripting, UI/UX, animations, and ads integration." />
+  <meta property="og:title" content="Samama Yaseen | 2D Game Developer" />
+  <meta property="og:description" content="Explore projects and professional experience of Samama Yaseen in mobile game development." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (replace path with your favicon file) -->
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
   <style>
     * {
       scroll-behavior: smooth;
@@ -14,6 +26,7 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom right, #f0f4f8, #e0f7fa);
       color: #1e293b;
+      line-height: 1.6;
     }
     header, section {
       padding: 12px 20px;
@@ -39,6 +52,7 @@
     header p {
       font-size: 1rem;
       color: #64748b;
+      margin: 0;
     }
     nav {
       background-color: #e0f2fe;
@@ -55,8 +69,10 @@
       text-decoration: none;
       font-weight: 600;
     }
-    nav a:hover {
+    nav a:hover,
+    nav a:focus {
       text-decoration: underline;
+      outline: none;
     }
     section h2 {
       margin-top: 10px;
@@ -74,8 +90,10 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s;
     }
-    .project:hover {
+    .project:hover,
+    .project:focus-within {
       transform: scale(1.02);
+      outline: none;
     }
     .project h3 {
       margin: 0 0 8px;
@@ -87,8 +105,7 @@
       color: #475569;
     }
     .button {
-      display: block;
-      width: fit-content;
+      display: inline-block;
       padding: 8px 14px;
       background-color: #0ea5e9;
       color: white;
@@ -99,8 +116,16 @@
       transition: background 0.3s;
       margin-top: 8px;
     }
-    .button:hover {
+    .button:hover,
+    .button:focus {
       background-color: #0284c7;
+      outline: none;
+    }
+    .button[aria-disabled="true"],
+    .button[disabled] {
+      background-color: #94a3b8;
+      cursor: not-allowed;
+      pointer-events: none;
     }
     footer {
       background-color: #e0f2fe;
@@ -119,25 +144,42 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 500px) {
+      header, section {
+        padding: 12px 10px;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 0.9rem;
+      }
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <header>
-  <h1 style="margin: 2px 0; font-size: 2rem;">Samama Yaseen</h1>
-  <p style="margin: 0; font-size: 1rem;">2D Unity Game Developer | Mobile Games | Gameplay | Tools | Ads Integration</p>
+<nav>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header>
+  <h1>Samama Yaseen</h1>
+  <p>2D Unity Game Developer | Mobile Games | Gameplay | Tools | Ads Integration</p>
 </header>
 
-  <section id="about" style="margin-bottom: 10px;">
+<section id="about" style="margin-bottom: 10px;">
   <h2>About Me</h2>
-  <p>I am a 2D Unity Game Developer with over 2 year of experience in developing mobile games. I have expertise in gameplay scripting, UI/UX implementation, animations, and ads integration. My passion lies in crafting visually engaging, high-performance mobile games. Currently, I am working at <strong>Game Rezort</strong> where I have contributed to multiple successful titles through hands-on development and optimization techniques.</p>
+  <p>
+    I am a 2D Unity Game Developer with over 2 years of experience in developing mobile games. I have expertise in gameplay scripting, UI/UX implementation, animations, and ads integration. My passion lies in crafting visually engaging, high-performance mobile games. Currently, I am working at <strong>Game Rezort</strong> where I have contributed to multiple successful titles through hands-on development and optimization techniques.
+  </p>
 </section>
 
 <section id="experience" style="margin-top: 0;">
@@ -149,62 +191,138 @@
   </ul>
 </section>
 
-  <section id="projects">
+<section id="projects">
   <h2>Projects</h2>
-  <div class="project"><h3>Rainbow DOP</h3><p>A colorful puzzle game where players draw missing parts to complete illustrations. Engaging brain teasers with artistic and logical thinking combined for fun and challenge.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.gss.dop.fun.delete.puzzle.games"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Doll House Game Offline</h3><p>Decorate, furnish, and manage a virtual doll house. Perfect for young audiences who enjoy role-play and creativity in interior design games.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.doll.house.modern.girls.game&hl=en&gl=US"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Yummy Ice Cream Game</h3><p>A delightful cooking simulator where players prepare, decorate, and serve ice creams. Includes multiple recipes, toppings, and customizations for creativity.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Ice Cream Cone Cooking Game</h3><p>Stack, decorate, and deliver ice cream cones to customers. Colorful visuals and tap-based interaction provide a fun user experience.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Emoji Puzzle Connect Game</h3><p>Connect pairs of emojis using logical thinking. Includes funny, surprising combinations that make the gameplay both challenging and entertaining.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Sticker Book Color Puzzle Game</h3><p>A relaxing coloring puzzle where players place stickers into the correct positions to complete images. Encourages memory and pattern recognition.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Cake Maker DIY Cake Game</h3><p>Bake and design beautiful cakes from scratch. Players can choose ingredients, layer flavors, and decorate with frosting and sprinkles.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Lip Art DIY Lipstick Game</h3><p>Experience creative freedom by designing custom lipsticks. Choose colors, mix styles, and apply designs in this beauty simulation game.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Block Puzzle Smash Blocks</h3><p>Clear blocks strategically in this classic-style arcade puzzle game. Features satisfying animations and increasing level difficulty.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Goods Matching Sorting Game</h3><p>Sort and organize goods in time-based challenges. Enhances multitasking and accuracy with fast-paced puzzle mechanics.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Folding Fun Paper Folding</h3><p>Simulates the fun of folding paper into various shapes. Offers increasingly complex folding challenges to enhance logic and spatial reasoning.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>DOP Puzzle Delete One Part</h3><p>Players must erase one part of a picture to solve a puzzle. Includes clever and funny scenarios requiring logical deduction and creativity.</p><a class="button" href="#">Click to Download</a></div>
-  <div class="project"><h3>Barber Hair Cut ASMR Salon</h3><p>Provide relaxing haircuts and grooming services in a virtual salon. Includes soothing sound effects for an immersive ASMR experience.</p><a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view?usp=drive_link"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Find Hidden Objects</h3><p>Search for hidden items in beautifully drawn scenes. Boosts observation skills and visual memory with each level.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.find.hiddenobjects.spot.differences.seek.puzzle.games&hl=en&gl=US"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Spot The Hidden Cats</h3><p>A charming game where players locate hidden cats in cozy, cluttered environments. Great for cat lovers and puzzle fans alike.</p><a class="button" href="https://play.google.com/store/apps/details?id=ss.findthecat.hidden.cat.games&hl=en&gl=US"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Find the Differences - Find It</h3><p>Test your observation skills by spotting hidden differences between two seemingly identical images in this engaging and addictive puzzle game.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.hos.find.the.differences.find.it.game" target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Home Fix ASMR Makeover Clean</h3><p>Clean and repair messy home environments. Features calming sounds and visuals that make tidying up satisfying and stress-relieving.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.ss.home.fix.asmr.makeover.clean"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Satisnow Perfect Tidy Game</h3><p>A winter-themed cleaning simulator with satisfying animations and effects. Helps users relax while organizing cluttered spaces.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr"target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Cozy Decor Room Unpacking Box</h3><p>Unpack and place furniture and decorations in various themed rooms. Offers a blend of puzzle and decoration gameplay.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.cozy.room.decor.unpacking.box&hl=en&gl=US" target="_blank">Click to Download</a></div>
-  <div class="project"><h3>Mini Games Antistress Relaxing</h3><p>Relax your mind with soothing mini games designed to relieve stress anytime, anywhere.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.gss.relaxing.toys.mini.games&hl=en&gl=US" target="_blank">Click to Download</a></div>
-  
+  <div class="project">
+    <h3>Doll House Game Offline</h3>
+    <p>Decorate, furnish, and manage a virtual doll house. Perfect for young audiences who enjoy role-play and creativity in interior design games.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.doll.house.modern.girls.game&hl=en&gl=US" target="_blank" rel="noopener noreferrer" aria-label="Download Doll House Game Offline">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Yummy Ice Cream Game</h3>
+    <p>A delightful cooking simulator where players prepare, decorate, and serve ice creams. Includes multiple recipes, toppings, and customizations for creativity.</p>
+    <a class="button" href="#" aria-disabled="true" aria-label="Yummy Ice Cream Game download coming soon">Coming Soon</a>
+  </div>
+  <div class="project">
+    <h3>Ice Cream Cone Cooking Game</h3>
+    <p>Stack, decorate, and deliver ice cream cones to customers. Colorful visuals and tap-based interaction provide a fun user experience.</p>
+    <a class="button" href="#" aria-disabled="true" aria-label="Ice Cream Cone Cooking Game download coming soon">Coming Soon</a>
+  </div>
+  <div class="project">
+    <h3>Emoji Puzzle Connect Game</h3>
+    <p>Connect pairs of emojis using logical thinking. Includes funny, surprising combinations that make the gameplay both challenging and entertaining.</p>
+    <a class="button" href="#" aria-disabled="true" aria-label="Emoji Puzzle Connect Game download coming soon">Coming Soon</a>
+  </div>
+  <div class="project">
+    <h3>Sticker Book Color Puzzle Game</h3>
+    <p>A relaxing coloring puzzle where players place stickers into the correct positions to complete images. Encourages memory and pattern recognition.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.sticker.book.coloring.puzzle.asmr.game" target="_blank" rel="noopener noreferrer" aria-label="Download Sticker Book Color Puzzle Game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Cake Maker DIY Cake Game</h3>
+    <p>Bake and design beautiful cakes from scratch. Players can choose ingredients, layer flavors, and decorate with frosting and sprinkles.</p>
+    <a class="button" href="#" aria-disabled="true" aria-label="Cake Maker DIY Cake Game download coming soon">Coming Soon</a>
+  </div>
+  <div class="project">
+    <h3>Lip Art DIY Lipstick Game</h3>
+    <p>Experience creative freedom by designing custom lipsticks. Choose colors, mix styles, and apply designs in this beauty simulation game.</p>
+    <a class="button" href="#" aria-disabled="true" aria-label="Lip Art DIY Lipstick Game download coming soon">Coming Soon</a>
+  </div>
+  <div class="project">
+    <h3>Block Puzzle Smash Blocks</h3>
+    <p>Clear blocks strategically in this classic-style arcade puzzle game. Features satisfying animations and increasing level difficulty.</p>
+    <a class="button" href="https://drive.google.com/file/d/1UrYbqv3oWiJ-LPmsMU-I4gvIMHeQ2JJR/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Download Block Puzzle Smash Blocks">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Goods Matching Sorting Game</h3>
+    <p>Sort and organize goods in time-based challenges. Enhances multitasking and accuracy with fast-paced puzzle mechanics.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.goods.sort.match.puzzle.games" target="_blank" rel="noopener noreferrer" aria-label="Download Goods Matching Sorting Game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Folding Fun Paper Folding</h3>
+    <p>Simulates the fun of folding paper into various shapes. Offers increasingly complex folding challenges to enhance logic and spatial reasoning.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.paper.fold.fun.puzzle.sort" target="_blank" rel="noopener noreferrer" aria-label="Download Folding Fun Paper Folding game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>DOP Puzzle Delete One Part</h3>
+    <p>Players must erase one part of a picture to solve a puzzle. Includes clever and funny scenarios requiring logical deduction and creativity.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.dop.fun.delete.puzzle.games" target="_blank" rel="noopener noreferrer" aria-label="Download DOP Puzzle Delete One Part game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Barber Hair Cut ASMR Salon</h3>
+    <p>Provide relaxing haircuts and grooming services in a virtual salon. Includes soothing sound effects for an immersive ASMR experience.</p>
+    <a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Download Barber Hair Cut ASMR Salon game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Find Hidden Objects</h3>
+    <p>Search for hidden items in beautifully drawn scenes. Boosts observation skills and visual memory with each level.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.ai.hidden.objects.find.it.all&hl=en_US&gl=US" target="_blank" rel="noopener noreferrer" aria-label="Download Find Hidden Objects game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Spot The Hidden Cats</h3>
+    <p>A charming game where players locate hidden cats in cozy, cluttered environments. Great for cat lovers and puzzle fans alike.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=ss.findthecat.hidden.cat.games&hl=en&gl=US" target="_blank" rel="noopener noreferrer" aria-label="Download Spot The Hidden Cats game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Find the Differences - Find It</h3>
+    <p>Test your observation skills by spotting hidden differences between two seemingly identical images in this engaging and addictive puzzle game.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.hos.find.the.differences.find.it.game" target="_blank" rel="noopener noreferrer" aria-label="Download Find the Differences - Find It game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Home Fix ASMR Makeover Clean</h3>
+    <p>Clean and repair messy home environments. Features calming sounds and visuals that make tidying up satisfying and stress-relieving.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.home.fix.asmr.makeover.clean" target="_blank" rel="noopener noreferrer" aria-label="Download Home Fix ASMR Makeover Clean game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Satisnow Perfect Tidy Game</h3>
+    <p>A winter-themed cleaning simulator with satisfying animations and effects. Helps users relax while organizing cluttered spaces.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr" target="_blank" rel="noopener noreferrer" aria-label="Download Satisnow Perfect Tidy Game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Cozy Decor Room Unpacking Box</h3>
+    <p>Unpack and place furniture and decorations in various themed rooms. Offers a blend of puzzle and decoration gameplay.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.cozy.room.decor.unpacking.box&hl=en&gl=US" target="_blank" rel="noopener noreferrer" aria-label="Download Cozy Decor Room Unpacking Box game">Click to Download</a>
+  </div>
+  <div class="project">
+    <h3>Mini Games Antistress Relaxing</h3>
+    <p>Relax your mind with soothing mini games designed to relieve stress anytime, anywhere.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.relaxing.toys.mini.games&hl=en&gl=US" target="_blank" rel="noopener noreferrer" aria-label="Download Mini Games Antistress Relaxing">Click to Download</a>
+  </div>
+</section>
 
+<section id="education">
+  <h2>Education</h2>
+  <p><strong>Bachelor in Computer Science</strong> — Virtual University of Pakistan (2021 - Present)</p>
+</section>
 
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Phone : +92 310 4270525</p>
+  <p>Location : Lahore, Pakistan</p>
+  <p>Email : <a href="mailto:samama2341@gmail.com">samama2341@gmail.com</a></p>
+  <p>LinkedIn : <a href="https://linkedin.com/in/samama-yaseen-795125202" target="_blank" rel="noopener noreferrer">linkedin.com/in/samama-yaseen</a></p>
+</section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <p><strong>Bachelor in Computer Science</strong> — Virtual University of Pakistan (2021 - Present)</p>
-  </section>
+<footer>
+  &copy; <span id="year"></span> Samama Yaseen. All rights reserved.
+</footer>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Phone    :  +92 310 4270525</p>
-    <p>Location :  Lahore, Pakistan</p>
-    <p>Email    :  <a href="mailto:samama2341@gmail.com">samama2341@gmail.com</a></p>
-    <p>LinkedIn :  <a href="https://linkedin.com/in/samama-yaseen-795125202" target="_blank">linkedin.com/in/samama-yaseen</a></p>
-  </section>
-
-  <footer>
-    &copy; 2025 Samama Yaseen. All rights reserved.
-  </footer>
-
-  <script>
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => {
-      observer.observe(section);
+<script>
+  // Intersection Observer to trigger section animations
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  </script>
+  }, { threshold: 0.1 });
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Auto update footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
