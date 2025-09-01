@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samama Yaseen | 2D Game Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #e0f7fa);
+      color: #1e293b;
+    }
+    header, section {
+      padding: 12px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    header {
+      background-color: #e0f2fe;
+      text-align: center;
+      border-bottom: 2px solid #bae6fd;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    header h1 {
+      margin: 5px 0 2px;
+      font-size: 2.2rem;
+      color: #0ea5e9;
+    }
+    header p {
+      font-size: 1rem;
+      color: #64748b;
+    }
+    nav {
+      background-color: #e0f2fe;
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid #bae6fd;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #0ea5e9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section h2 {
+      margin-top: 10px;
+      border-bottom: 2px solid #94a3b8;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+      color: #0ea5e9;
+    }
+    .project {
+      margin-bottom: 20px;
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+    .project:hover {
+      transform: scale(1.02);
+    }
+    .project h3 {
+      margin: 0 0 8px;
+      color: #0f172a;
+    }
+    .project p {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    .button {
+      display: block;
+      width: fit-content;
+      padding: 8px 14px;
+      background-color: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+      margin-top: 8px;
+    }
+    .button:hover {
+      background-color: #0284c7;
+    }
+    footer {
+      background-color: #e0f2fe;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #64748b;
+      border-top: 2px solid #bae6fd;
+    }
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-in-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+  <h1 style="margin: 2px 0; font-size: 2rem;">Samama Yaseen</h1>
+  <p style="margin: 0; font-size: 1rem;">2D Unity Game Developer | Mobile Games | Gameplay | Tools | Ads Integration</p>
+</header>
+
+  <section id="about" style="margin-bottom: 10px;">
+  <h2>About Me</h2>
+  <p>I am a 2D Unity Game Developer with over 2 year of experience in developing mobile games. I have expertise in gameplay scripting, UI/UX implementation, animations, and ads integration. My passion lies in crafting visually engaging, high-performance mobile games. Currently, I am working at <strong>Game Rezort</strong> where I have contributed to multiple successful titles through hands-on development and optimization techniques.</p>
+</section>
+
+<section id="experience" style="margin-top: 0;">
+  <h2>Professional Experience</h2>
+  <p><strong style="color:#0ea5e9;">Game Rezort</strong> — June 2023 - Present</p>
+  <ul>
+    <li><strong style="color:#0ea5e9;">Internship:</strong> Worked on game reskinning, scripting, sound integration, UI, and timeline-based animations.</li>
+    <li><strong style="color:#0ea5e9;">Junior Game Developer:</strong> Integrated Unity Ads, created 2D animations, worked with ScriptableObjects, optimized performance, and built tools to support development.</li>
+  </ul>
+</section>
+
+  <section id="projects">
+  <h2>Projects</h2>
+  <div class="project"><h3>Rainbow DOP</h3><p>A colorful puzzle game where players draw missing parts to complete illustrations. Engaging brain teasers with artistic and logical thinking combined for fun and challenge.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.gss.dop.fun.delete.puzzle.games"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Doll House Game Offline</h3><p>Decorate, furnish, and manage a virtual doll house. Perfect for young audiences who enjoy role-play and creativity in interior design games.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.doll.house.modern.girls.game&hl=en&gl=US"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Yummy Ice Cream Game</h3><p>A delightful cooking simulator where players prepare, decorate, and serve ice creams. Includes multiple recipes, toppings, and customizations for creativity.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Ice Cream Cone Cooking Game</h3><p>Stack, decorate, and deliver ice cream cones to customers. Colorful visuals and tap-based interaction provide a fun user experience.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Emoji Puzzle Connect Game</h3><p>Connect pairs of emojis using logical thinking. Includes funny, surprising combinations that make the gameplay both challenging and entertaining.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Sticker Book Color Puzzle Game</h3><p>A relaxing coloring puzzle where players place stickers into the correct positions to complete images. Encourages memory and pattern recognition.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Cake Maker DIY Cake Game</h3><p>Bake and design beautiful cakes from scratch. Players can choose ingredients, layer flavors, and decorate with frosting and sprinkles.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Lip Art DIY Lipstick Game</h3><p>Experience creative freedom by designing custom lipsticks. Choose colors, mix styles, and apply designs in this beauty simulation game.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Block Puzzle Smash Blocks</h3><p>Clear blocks strategically in this classic-style arcade puzzle game. Features satisfying animations and increasing level difficulty.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Goods Matching Sorting Game</h3><p>Sort and organize goods in time-based challenges. Enhances multitasking and accuracy with fast-paced puzzle mechanics.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Folding Fun Paper Folding</h3><p>Simulates the fun of folding paper into various shapes. Offers increasingly complex folding challenges to enhance logic and spatial reasoning.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>DOP Puzzle Delete One Part</h3><p>Players must erase one part of a picture to solve a puzzle. Includes clever and funny scenarios requiring logical deduction and creativity.</p><a class="button" href="#">Click to Download</a></div>
+  <div class="project"><h3>Barber Hair Cut ASMR Salon</h3><p>Provide relaxing haircuts and grooming services in a virtual salon. Includes soothing sound effects for an immersive ASMR experience.</p><a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view?usp=drive_link"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Find Hidden Objects</h3><p>Search for hidden items in beautifully drawn scenes. Boosts observation skills and visual memory with each level.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.find.hiddenobjects.spot.differences.seek.puzzle.games&hl=en&gl=US"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Spot The Hidden Cats</h3><p>A charming game where players locate hidden cats in cozy, cluttered environments. Great for cat lovers and puzzle fans alike.</p><a class="button" href="https://play.google.com/store/apps/details?id=ss.findthecat.hidden.cat.games&hl=en&gl=US"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Find the Differences - Find It</h3><p>Test your observation skills by spotting hidden differences between two seemingly identical images in this engaging and addictive puzzle game.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.hos.find.the.differences.find.it.game" target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Home Fix ASMR Makeover Clean</h3><p>Clean and repair messy home environments. Features calming sounds and visuals that make tidying up satisfying and stress-relieving.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.ss.home.fix.asmr.makeover.clean"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Satisnow Perfect Tidy Game</h3><p>A winter-themed cleaning simulator with satisfying animations and effects. Helps users relax while organizing cluttered spaces.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr"target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Cozy Decor Room Unpacking Box</h3><p>Unpack and place furniture and decorations in various themed rooms. Offers a blend of puzzle and decoration gameplay.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.cozy.room.decor.unpacking.box&hl=en&gl=US" target="_blank">Click to Download</a></div>
+  <div class="project"><h3>Mini Games Antistress Relaxing</h3><p>Relax your mind with soothing mini games designed to relieve stress anytime, anywhere.</p><a class="button" href="https://play.google.com/store/apps/details?id=com.gss.relaxing.toys.mini.games&hl=en&gl=US" target="_blank">Click to Download</a></div>
+  
+
+
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><strong>Bachelor in Computer Science</strong> — Virtual University of Pakistan (2021 - Present)</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Phone    :  +92 310 4270525</p>
+    <p>Location :  Lahore, Pakistan</p>
+    <p>Email    :  <a href="mailto:samama2341@gmail.com">samama2341@gmail.com</a></p>
+    <p>LinkedIn :  <a href="https://linkedin.com/in/samama-yaseen-795125202" target="_blank">linkedin.com/in/samama-yaseen</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Samama Yaseen. All rights reserved.
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
