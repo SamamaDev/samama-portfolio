@@ -8,351 +8,848 @@
   <!-- SEO -->
   <meta name="description" content="Samama Yaseen — 2D Unity Game Developer with 500K+ downloads. Mobile ASMR, casual & puzzle games." />
 
+  <!-- Open Graph (Better share preview, info same) -->
+  <meta property="og:title" content="Samama Yaseen | 2D Unity Game Developer" />
+  <meta property="og:description" content="2D Unity Game Developer with 500K+ downloads • ASMR • Casual • Puzzle Games" />
+  <meta property="og:type" content="website" />
+
   <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --primary: #38bdf8;
-      --secondary: #67e8f9;
-      --accent: #22c55e;
-      --bg: #f8fafc;
-      --card: rgba(255,255,255,0.75);
-      --text: #0f172a;
-      --muted: #64748b;
+    :root{
+      --bg0:#f6fbff;
+      --bg1:#f3fff9;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --card:rgba(255,255,255,.70);
+      --border:rgba(2,6,23,.08);
+      --shadow: 0 18px 48px rgba(2,6,23,.08);
+      --shadow2: 0 10px 28px rgba(2,6,23,.06);
+
+      --primary:#0ea5e9;
+      --primary2:#38bdf8;
+      --accent:#22c55e;
+      --accent2:#86efac;
+
+      --radius:18px;
+      --radius2:24px;
+      --max: 980px;
     }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(14,165,233,.14), transparent 55%),
+        radial-gradient(1000px 600px at 90% 20%, rgba(34,197,94,.14), transparent 60%),
+        linear-gradient(135deg,var(--bg0),var(--bg1));
+      overflow-x:hidden;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f0fdfa, #f8fafc);
-      color: var(--text);
-      overflow-x: hidden;
+    /* Top ambient blobs (relaxing) */
+    .blob{
+      position:fixed;
+      inset:auto auto auto auto;
+      width:520px;
+      height:520px;
+      filter: blur(60px);
+      opacity:.22;
+      z-index:-1;
+      pointer-events:none;
+      border-radius:50%;
+      transform: translate3d(0,0,0);
+    }
+    .blob.one{
+      top:-220px; left:-180px;
+      background: radial-gradient(circle at 30% 30%, var(--primary2), transparent 60%);
+    }
+    .blob.two{
+      top:120px; right:-220px;
+      background: radial-gradient(circle at 40% 40%, var(--accent2), transparent 62%);
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.6);
-      padding: 12px;
-      text-align: center;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.55);
+      border-bottom: 1px solid var(--border);
     }
-
-    nav a {
-      margin: 0 14px;
-      text-decoration: none;
+    .nav-inner{
+      max-width: var(--max);
+      margin:auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 170px;
+    }
+    .brand-dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 0 0 6px rgba(14,165,233,.10);
+    }
+    .brand-title{
       font-weight: 600;
+      font-size: .95rem;
+      color: var(--ink);
+      letter-spacing: .2px;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap: 10px;
+    }
+    .nav-links a{
+      text-decoration:none;
+      font-weight:600;
+      font-size: .92rem;
+      color: rgba(15,23,42,.85);
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .nav-links a:hover{
+      background: rgba(14,165,233,.10);
       color: var(--primary);
-      transition: color 0.3s;
+      transform: translateY(-1px);
     }
 
-    nav a:hover {
-      color: var(--accent);
+    .cta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 170px;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(34,197,94,.10);
+      border: 1px solid rgba(34,197,94,.18);
+      color: rgba(15,23,42,.82);
+      font-weight: 600;
+      font-size: .82rem;
+      white-space:nowrap;
+    }
+    .pill .mini{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--accent);
     }
 
-    header {
-      text-align: center;
-      padding: 70px 20px 50px;
-      background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
-      animation: fadeDown 1s ease forwards;
+    /* HEADER / HERO */
+    header{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 52px 18px 18px;
+    }
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius2);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.40));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 44px 22px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(600px 280px at 20% 20%, rgba(14,165,233,.22), transparent 60%),
+        radial-gradient(600px 280px at 80% 30%, rgba(34,197,94,.18), transparent 65%);
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items:center;
     }
 
-    header h1 {
-      font-size: 2.6rem;
-      margin-bottom: 8px;
-      background: linear-gradient(to right, #0ea5e9, #22c55e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero h1{
+      margin:0 0 8px;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
-
-    header p {
+    .hero p{
+      margin:0;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.03rem;
+      line-height: 1.65;
+    }
+    .hero-badges{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.60);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      font-size: .86rem;
+      color: rgba(15,23,42,.82);
+      font-weight: 600;
+      white-space:nowrap;
+    }
+    .badge .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: linear-gradient(135deg,var(--primary),var(--accent));
     }
 
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px 20px;
+    .hero-side{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      align-items:stretch;
+      justify-content:center;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.62);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+      box-shadow: var(--shadow2);
+    }
+    .hero-card .label{
+      font-size: .78rem;
+      color: rgba(100,116,139,.95);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .hero-card .value{
+      font-weight: 700;
+      font-size: 1rem;
+      color: rgba(15,23,42,.88);
+    }
+
+    /* SECTIONS */
+    main{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 18px 60px;
+    }
+    section{
+      margin-top: 26px;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
     }
-
-    section.visible {
+    section.visible{
       opacity: 1;
       transform: translateY(0);
     }
-
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      position: relative;
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      margin: 0 0 14px;
     }
-
-    section h2::after {
-      content: "";
-      position: absolute;
-      width: 60px;
+    h2{
+      margin:0;
+      font-size: 1.55rem;
+      letter-spacing: -0.2px;
+      position:relative;
+      padding-bottom: 10px;
+    }
+    h2::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width: 66px;
       height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      bottom: -8px;
-      left: 0;
-      border-radius: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg,var(--primary),var(--accent));
+      opacity:.85;
     }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 5px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .project h3 {
-      margin-top: 0;
-    }
-
-    .downloads {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-left: 8px;
-      font-weight: 600;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 9px 16px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(34,197,94,0.3);
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+    .sub{
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: .92rem;
+      margin: 0;
     }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
     }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.9rem; }
-      section { padding: 40px 16px; }
+    /* Lists */
+    ul{ margin: 8px 0 0; padding-left: 20px; }
+    li{ margin: 8px 0; color: rgba(15,23,42,.86); }
+    p{ margin: 0; }
+
+    /* Projects grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .project{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .project:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .project h3{
+      margin:0;
+      font-size: 1.06rem;
+      line-height: 1.35;
+      color: rgba(15,23,42,.92);
+    }
+    .project p{
+      color: rgba(100,116,139,.98);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+    .meta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .downloads{
+      font-size: .78rem;
+      font-weight: 700;
+      color: rgba(34,197,94,.95);
+      background: rgba(34,197,94,.10);
+      border: 1px solid rgba(34,197,94,.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 700;
+      font-size: .88rem;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 14px 30px rgba(14,165,233,.18);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .button:hover{
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(34,197,94,.18);
+      filter: saturate(1.06);
+    }
+
+    /* Featured Projects */
+    .featured-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .featured{
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius2);
+      background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(255,255,255,.55));
+      border: 1px solid rgba(14,165,233,.16);
+      box-shadow: var(--shadow);
+    }
+    .featured::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(520px 220px at 20% 20%, rgba(14,165,233,.18), transparent 62%),
+        radial-gradient(520px 220px at 80% 40%, rgba(34,197,94,.14), transparent 65%);
+      pointer-events:none;
+    }
+    .featured .featured-tag{
+      position:absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      font-size: .78rem;
+      font-weight: 800;
+      color: rgba(15,23,42,.82);
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      box-shadow: var(--shadow2);
+    }
+    .featured .project{
+      position:relative;
+      z-index:1;
+    }
+    .more-title{
+      margin: 10px 0 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .more-title h3{
+      margin:0;
+      font-size: 1.05rem;
+      color: rgba(15,23,42,.85);
+    }
+    .more-title .hint{
+      margin:0;
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .contact-item{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+    }
+    .icon{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(135deg, rgba(14,165,233,.18), rgba(34,197,94,.14));
+      border: 1px solid rgba(2,6,23,.06);
+      flex: 0 0 auto;
+    }
+    .contact-item .k{
+      font-size: .8rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .contact-item .v{
+      font-weight: 700;
+      color: rgba(15,23,42,.88);
+      font-size: .95rem;
+      word-break: break-word;
+    }
+
+    footer{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 18px 30px;
+      color: var(--muted);
+      text-align:center;
+      font-size: .9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .cta{ display:none; } /* keep nav clean */
+    }
+    @media (max-width: 680px){
+      .grid{ grid-template-columns: 1fr; }
+      .featured-grid{ grid-template-columns: 1fr; }
+      .contact-grid{ grid-template-columns: 1fr; }
+      .nav-inner{ justify-content:center; }
+      .brand{ display:none; }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; animation:none !important; }
+      html{ scroll-behavior:auto; }
     }
   </style>
 </head>
 
 <body>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand" aria-label="Brand">
+        <div class="brand-dot"></div>
+        <div class="brand-title">Samama Yaseen</div>
+      </div>
 
-<header>
-  <h1>Samama Yaseen</h1>
-  <p>2D Unity Game Developer with <strong>500K+ Downloads</strong> • ASMR • Casual • Puzzle Games</p>
-</header>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      I am a 2D Unity Game Developer with 2+ years of experience creating relaxing,
-      visually engaging mobile games across ASMR, casual, puzzle and simulation genres.
-      I focus on clean gameplay systems, smooth animations, and performance optimization.
-    </p>
-  </div>
-</section>
+      <div class="cta">
+        <span class="pill"><span class="mini"></span> Open to opportunities</span>
+      </div>
+    </div>
+  </nav>
 
-<section id="skills">
-  <h2>Core Skills</h2>
-  <div class="card">
-    <ul>
-      <li>Unity & C# (Gameplay systems, tools, ScriptableObjects)</li>
-      <li>2D UI/UX, Animator, Timeline animations</li>
-      <li>Mobile optimization & performance tuning</li>
-      <li>Unity Ads & monetization workflows</li>
-      <li>ASMR, Casual, Puzzle & Simulation games</li>
-    </ul>
-  </div>
-</section>
+  <header>
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Samama Yaseen</h1>
+          <p>
+            2D Unity Game Developer with <strong>500K+ Downloads</strong> • ASMR • Casual • Puzzle Games
+          </p>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="card">
-    <p><strong>Game Rezort</strong> — June 2023 – Present</p>
-    <ul>
-      <li>Built and optimized multiple Play Store mobile games</li>
-      <li>Integrated ads, improved performance, and created reusable systems</li>
-      <li>Worked closely with designers to polish gameplay and UX</li>
-    </ul>
-  </div>
-</section>
+          <div class="hero-badges" aria-label="Highlights">
+            <span class="badge"><span class="dot"></span> Unity • C#</span>
+            <span class="badge"><span class="dot"></span> Mobile Optimization</span>
+            <span class="badge"><span class="dot"></span> Ads & Monetization</span>
+          </div>
+        </div>
 
-<section id="projects">
-  <h2>Projects</h2>
+        <div class="hero-side">
+          <div class="hero-card">
+            <div class="label">Location</div>
+            <div class="value">Lahore, Pakistan</div>
+          </div>
+          <div class="hero-card">
+            <div class="label">Experience</div>
+            <div class="value">2+ Years (Unity 2D)</div>
+          </div>
+          <div class="hero-card">
+            <div class="label">Focus</div>
+            <div class="value">ASMR • Casual • Puzzle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <div class="card project">
-    <h3>Home Fix ASMR Makeover Clean <span class="downloads">📥 500K+</span></h3>
-    <p>A makeover and repair game where players clean, fix, and transform messy homes with calming ASMR interactions.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.home.fix.asmr.makeover.clean" target="_blank">View on Play Store</a>
-  </div>
-  
-  <div class="card project">
-    <h3>Kitchen Chef Cooking ASMR Game</span></h3>
-    <p>Cook, chop, and fry meals with satisfying ASMR kitchen sounds.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.thekitchen&hl=en" target="_blank">View on Play Store</a>
-  </div>
+  <main>
+    <section id="about">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <p class="sub">Relaxing mobile games • Clean systems • Smooth animations</p>
+      </div>
+      <div class="card">
+        <p>
+          I am a 2D Unity Game Developer with 2+ years of experience creating relaxing,
+          visually engaging mobile games across ASMR, casual, puzzle and simulation genres.
+          I focus on clean gameplay systems, smooth animations, and performance optimization.
+        </p>
+      </div>
+    </section>
 
-  <div class="card project">
-    <h3>Cozy Decor Room Unpacking Box</h3>
-    <p>Unpack and decorate cozy rooms with puzzle-based gameplay.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.cozy.room.decor.unpacking.box" target="_blank">View on Play Store</a>
-  </div>
+    <section id="skills">
+      <div class="section-head">
+        <h2>Core Skills</h2>
+        <p class="sub">Production-ready mobile workflows</p>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Unity & C# (Gameplay systems, tools, ScriptableObjects)</li>
+          <li>2D UI/UX, Animator, Timeline animations</li>
+          <li>Mobile optimization & performance tuning</li>
+          <li>Unity Ads & monetization workflows</li>
+          <li>ASMR, Casual, Puzzle & Simulation games</li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="card project">
-    <h3>Mini Games Antistress Relaxing</h3>
-    <p>Collection of relaxing mini-games designed to reduce stress.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.relaxing.toys.mini.games" target="_blank">View on Play Store</a>
-  </div>
+    <section id="experience">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p class="sub">Shipped games • Reusable systems • UX polish</p>
+      </div>
+      <div class="card">
+        <p><strong>Game Rezort</strong> — June 2023 – Present</p>
+        <ul>
+          <li>Built and optimized multiple Play Store mobile games</li>
+          <li>Integrated ads, improved performance, and created reusable systems</li>
+          <li>Worked closely with designers to polish gameplay and UX</li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="card project">
-    <h3>Find Hidden Objects</h3>
-    <p>Search and find hidden objects in beautifully illustrated scenes.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.ai.hidden.objects.find.it.all" target="_blank">View on Play Store</a>
-  </div>
+    <section id="projects">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p class="sub">Published titles & store links</p>
+      </div>
 
-  <div class="card project">
-    <h3>Spot The Hidden Cats</h3>
-    <p>Find hidden cats in cozy environments for puzzle lovers.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=ss.findthecat.hidden.cat.games" target="_blank">View on Play Store</a>
-  </div>
+      <!-- Featured Projects -->
+      <div class="featured-grid">
 
-  <div class="card project">
-    <h3>Find the Differences - Find It</h3>
-    <p>Spot differences between two similar images.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.hos.find.the.differences.find.it.game" target="_blank">View on Play Store</a>
-  </div>
+        <!-- Featured 1: Home Fix -->
+        <div class="card featured">
+          <div class="featured-tag">Featured</div>
+          <div class="project">
+            <div class="meta">
+              <h3 style="margin:0;">Home Fix ASMR Makeover Clean</h3>
+              <span class="downloads">500K+ Downloads</span>
+            </div>
+            <p>A makeover and repair game where players clean, fix, and transform messy homes with calming ASMR interactions.</p>
+            <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.home.fix.asmr.makeover.clean" target="_blank" rel="noopener"
+               aria-label="View Home Fix ASMR Makeover Clean on Play Store">View on Play Store</a>
+          </div>
+        </div>
 
-  <div class="card project">
-    <h3>Goods Matching Sorting Game</h3>
-    <p>Sort goods in time-based puzzle challenges.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.goods.sort.match.puzzle.games" target="_blank">View on Play Store</a>
-  </div>
+        <!-- Featured 2: Cookzii -->
+        <div class="card featured">
+          <div class="featured-tag">Featured</div>
+          <div class="project">
+            <h3>Cookzii – Cooking ASMR Game</h3>
+            <p>
+              Cookzii is a relaxing 2D cooking game with satisfying ASMR interactions, focused on smooth, stress-free gameplay.
+            </p>
+            <a class="button"
+               href="https://play.google.com/store/apps/details?id=com.abtech.kitchendom.cozy"
+               target="_blank"
+               rel="noopener"
+               aria-label="View Cookzii – Cooking ASMR Game on Play Store">
+              View on Play Store
+            </a>
+          </div>
+        </div>
 
-  <div class="card project">
-    <h3>Block Puzzle Smash Blocks</h3>
-    <p>Classic arcade-style block puzzle game.</p>
-    <a class="button" href="https://drive.google.com/file/d/1UrYbqv3oWiJ-LPmsMU-I4gvIMHeQ2JJR/view" target="_blank">View on Play Store</a>
-  </div>
+        <!-- Featured 3: Find Hidden Objects -->
+        <div class="card featured">
+          <div class="featured-tag">Featured</div>
+          <div class="project">
+            <h3>Find Hidden Objects</h3>
+            <p>Search and find hidden objects in beautifully illustrated scenes.</p>
+            <a class="button" href="https://play.google.com/store/apps/details?id=com.ai.hidden.objects.find.it.all" target="_blank" rel="noopener"
+               aria-label="View Find Hidden Objects on Play Store">View on Play Store</a>
+          </div>
+        </div>
 
-  <div class="card project">
-    <h3>Folding Fun Paper Folding</h3>
-    <p>Paper folding puzzles with increasing difficulty.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.paper.fold.fun.puzzle.sort" target="_blank">View on Play Store</a>
-  </div>
+        <!-- Featured 4: Sort Puzzle: Goods Clash -->
+        <div class="card featured">
+          <div class="featured-tag">Featured</div>
+          <div class="project">
+            <h3>Sort Puzzle: Goods Clash</h3>
+            <p>Sort goods in time-based puzzle challenges.</p>
+            <a class="button" href="https://play.google.com/store/apps/details?id=com.ai.goods.puzzle.sort.clash&hl=en_US&gl=US" target="_blank" rel="noopener"
+               aria-label="View Sort Puzzle: Goods Clash on Play Store">View on Play Store</a>
+          </div>
+        </div>
 
-  <div class="card project">
-    <h3>DOP Puzzle Delete One Part</h3>
-    <p>Erase one part to solve fun logic puzzles.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.dop.fun.delete.puzzle.games" target="_blank">View on Play Store</a>
-  </div>
+      </div>
 
-  <div class="card project">
-    <h3>Barber Hair Cut ASMR Salon</h3>
-    <p>Relaxing ASMR haircut and grooming experience.</p>
-    <a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view" target="_blank">View on Play Store</a>
-  </div>
+      <!-- More Games -->
+      <div class="more-title">
+        <h3>More Games</h3>
+        <p class="hint">More published titles & links</p>
+      </div>
 
-  <div class="card project">
-    <h3>Sticker Book Color Puzzle Game</h3>
-    <p>Sticker placement puzzle with relaxing visuals.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.sticker.book.coloring.puzzle.asmr.game" target="_blank">View on Play Store</a>
-  </div>
+      <div class="grid">
+        <div class="card project">
+          <h3>Kitchen Chef Cooking ASMR Game</h3>
+          <p>Cook, chop, and fry meals with satisfying ASMR kitchen sounds.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.thekitchen&hl=en" target="_blank" rel="noopener"
+             aria-label="View Kitchen Chef Cooking ASMR Game on Play Store">View on Play Store</a>
+        </div>
 
-  <div class="card project">
-    <h3>Doll House Game Offline</h3>
-    <p>Creative doll house decoration and role-play game.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.doll.house.modern.girls.game" target="_blank">View on Play Store</a>
-  </div>
+        <div class="card project">
+          <h3>Cozy Decor Room Unpacking Box</h3>
+          <p>Unpack and decorate cozy rooms with puzzle-based gameplay.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.cozy.room.decor.unpacking.box" target="_blank" rel="noopener"
+             aria-label="View Cozy Decor Room Unpacking Box on Play Store">View on Play Store</a>
+        </div>
 
-  <div class="card project">
-    <h3>Satisnow Perfect Tidy Game</h3>
-    <p>Winter-themed satisfying cleaning simulator.</p>
-    <a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr" target="_blank">View on Play Store</a>
-  </div>
-  </section>
+        <div class="card project">
+          <h3>Mini Games Antistress Relaxing</h3>
+          <p>Collection of relaxing mini-games designed to reduce stress.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.relaxing.toys.mini.games" target="_blank" rel="noopener"
+             aria-label="View Mini Games Antistress Relaxing on Play Store">View on Play Store</a>
+        </div>
 
-<section id="education">
-  <h2>Education</h2>
-  <div class="card">
-    <p><strong>Bachelor in Computer Science</strong><br/>Virtual University of Pakistan (2021 – Present)</p>
-  </div>
-</section>
+        <div class="card project">
+          <h3>Spot The Hidden Cats</h3>
+          <p>Find hidden cats in cozy environments for puzzle lovers.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=ss.findthecat.hidden.cat.games" target="_blank" rel="noopener"
+             aria-label="View Spot The Hidden Cats on Play Store">View on Play Store</a>
+        </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p>📞 +92 310 4270525</p>
-    <p>📍 Lahore, Pakistan</p>
-    <p>Email: samama2341@gmail.com</p>
-    <p>LinkedIn: linkedin.com/in/samama-yaseen</p>
-  </div>
-</section>
+        <div class="card project">
+          <h3>Find the Differences - Find It</h3>
+          <p>Spot differences between two similar images.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.hos.find.the.differences.find.it.game" target="_blank" rel="noopener"
+             aria-label="View Find the Differences - Find It on Play Store">View on Play Store</a>
+        </div>
 
-<footer>
-  © <span id="year"></span> Samama Yaseen — 2D Unity Game Developer
-</footer>
+        <div class="card project">
+          <h3>Block Puzzle Smash Blocks</h3>
+          <p>Classic arcade-style block puzzle game.</p>
+          <a class="button" href="https://drive.google.com/file/d/1UrYbqv3oWiJ-LPmsMU-I4gvIMHeQ2JJR/view" target="_blank" rel="noopener"
+             aria-label="View Block Puzzle Smash Blocks link">View on Play Store</a>
+        </div>
 
-<script>
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.15 });
-  sections.forEach(sec => observer.observe(sec));
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+        <div class="card project">
+          <h3>Folding Fun Paper Folding</h3>
+          <p>Paper folding puzzles with increasing difficulty.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.ss.paper.fold.fun.puzzle.sort" target="_blank" rel="noopener"
+             aria-label="View Folding Fun Paper Folding on Play Store">View on Play Store</a>
+        </div>
 
+        <div class="card project">
+          <h3>DOP Puzzle Delete One Part</h3>
+          <p>Erase one part to solve fun logic puzzles.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.gss.dop.fun.delete.puzzle.games" target="_blank" rel="noopener"
+             aria-label="View DOP Puzzle Delete One Part on Play Store">View on Play Store</a>
+        </div>
+
+        <div class="card project">
+          <h3>Barber Hair Cut ASMR Salon</h3>
+          <p>Relaxing ASMR haircut and grooming experience.</p>
+          <a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view" target="_blank" rel="noopener"
+             aria-label="View Barber Hair Cut ASMR Salon link">View on Play Store</a>
+        </div>
+
+        <div class="card project">
+          <h3>Sticker Book Color Puzzle Game</h3>
+          <p>Sticker placement puzzle with relaxing visuals.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.sticker.book.coloring.puzzle.asmr.game" target="_blank" rel="noopener"
+             aria-label="View Sticker Book Color Puzzle Game on Play Store">View on Play Store</a>
+        </div>
+
+        <div class="card project">
+          <h3>Doll House Game Offline</h3>
+          <p>Creative doll house decoration and role-play game.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.pgs.doll.house.modern.girls.game" target="_blank" rel="noopener"
+             aria-label="View Doll House Game Offline on Play Store">View on Play Store</a>
+        </div>
+
+        <div class="card project">
+          <h3>Satisnow Perfect Tidy Game</h3>
+          <p>Winter-themed satisfying cleaning simulator.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr" target="_blank" rel="noopener"
+             aria-label="View Satisnow Perfect Tidy Game on Play Store">View on Play Store</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+        <p class="sub">Academic background</p>
+      </div>
+      <div class="card">
+        <p><strong>Bachelor in Computer Science</strong><br/>Virtual University of Pakistan (2021 – Present)</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="sub">Let’s connect</p>
+      </div>
+
+      <div class="card">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="icon" aria-hidden="true">📞</div>
+            <div>
+              <div class="k">Phone</div>
+              <div class="v">+92 310 4270525</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="k">Location</div>
+              <div class="v">Lahore, Pakistan</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon" aria-hidden="true">✉️</div>
+            <div>
+              <div class="k">Email</div>
+              <div class="v">samama2341@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="icon" aria-hidden="true">🔗</div>
+            <div>
+              <div class="k">LinkedIn</div>
+              <div class="v">linkedin.com/in/samama-yaseen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Samama Yaseen — 2D Unity Game Developer
+  </footer>
+
+  <script>
+    // Reveal sections (lightweight)
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // pro polish: no re-trigger
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach((sec) => observer.observe(sec));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
