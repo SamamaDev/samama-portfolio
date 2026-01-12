@@ -510,6 +510,26 @@
       *{ transition:none !important; animation:none !important; }
       html{ scroll-behavior:auto; }
     }
+
+    /* ===== MOBILE FIX: Featured tag overlap ===== */
+@media (max-width: 680px){
+
+  .featured .featured-tag{
+    position: static;        /* absolute remove */
+    display: inline-flex;
+    margin: 0 0 10px auto;   /* right aligned, title se upar */
+  }
+
+  .featured .project{
+    padding-top: 0;          /* no extra space needed now */
+  }
+
+  .project h3{
+    word-break: break-word;  /* long titles safe */
+    hyphens: auto;
+  }
+}
+
   </style>
 </head>
 
@@ -748,13 +768,6 @@
         </div>
 
         <div class="card project">
-          <h3>Barber Hair Cut ASMR Salon</h3>
-          <p>Relaxing ASMR haircut and grooming experience.</p>
-          <a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view" target="_blank" rel="noopener"
-             aria-label="View Barber Hair Cut ASMR Salon link">View on Play Store</a>
-        </div>
-
-        <div class="card project">
           <h3>Sticker Book Color Puzzle Game</h3>
           <p>Sticker placement puzzle with relaxing visuals.</p>
           <a class="button" href="https://play.google.com/store/apps/details?id=com.sticker.book.coloring.puzzle.asmr.game" target="_blank" rel="noopener"
@@ -769,9 +782,9 @@
         </div>
 
         <div class="card project">
-          <h3>Satisnow Perfect Tidy Game</h3>
-          <p>Winter-themed satisfying cleaning simulator.</p>
-          <a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr" target="_blank" rel="noopener"
+          <h3>ASMR Skincare Perfect Makeup</h3>
+          <p>A relaxing beauty game with step-by-step skincare and makeup, enhanced by soothing ASMR effects.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.gs.asmr.skincare.relaxing.spa.games" target="_blank" rel="noopener"
              aria-label="View Satisnow Perfect Tidy Game on Play Store">View on Play Store</a>
         </div>
       </div>
