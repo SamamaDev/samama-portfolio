@@ -510,26 +510,6 @@
       *{ transition:none !important; animation:none !important; }
       html{ scroll-behavior:auto; }
     }
-
-    /* ===== MOBILE FIX: Featured tag overlap ===== */
-@media (max-width: 680px){
-
-  .featured .featured-tag{
-    position: static;        /* absolute remove */
-    display: inline-flex;
-    margin: 0 0 10px auto;   /* right aligned, title se upar */
-  }
-
-  .featured .project{
-    padding-top: 0;          /* no extra space needed now */
-  }
-
-  .project h3{
-    word-break: break-word;  /* long titles safe */
-    hyphens: auto;
-  }
-}
-
   </style>
 </head>
 
@@ -597,7 +577,6 @@
     <section id="about">
       <div class="section-head">
         <h2>About Me</h2>
-        <p class="sub">Relaxing mobile games • Clean systems • Smooth animations</p>
       </div>
       <div class="card">
         <p>
@@ -611,7 +590,6 @@
     <section id="skills">
       <div class="section-head">
         <h2>Core Skills</h2>
-        <p class="sub">Production-ready mobile workflows</p>
       </div>
       <div class="card">
         <ul>
@@ -627,7 +605,6 @@
     <section id="experience">
       <div class="section-head">
         <h2>Experience</h2>
-        <p class="sub">Shipped games • Reusable systems • UX polish</p>
       </div>
       <div class="card">
         <p><strong>Game Rezort</strong> — June 2023 – Present</p>
@@ -642,7 +619,6 @@
     <section id="projects">
       <div class="section-head">
         <h2>Projects</h2>
-        <p class="sub">Published titles & store links</p>
       </div>
 
       <!-- Featured Projects -->
@@ -707,7 +683,6 @@
       <!-- More Games -->
       <div class="more-title">
         <h3>More Games</h3>
-        <p class="hint">More published titles & links</p>
       </div>
 
       <div class="grid">
@@ -768,6 +743,13 @@
         </div>
 
         <div class="card project">
+          <h3>Barber Hair Cut ASMR Salon</h3>
+          <p>Relaxing ASMR haircut and grooming experience.</p>
+          <a class="button" href="https://drive.google.com/file/d/1JDaN4OVbw0wAiiPQ7t2qqZtMHoWtzLcd/view" target="_blank" rel="noopener"
+             aria-label="View Barber Hair Cut ASMR Salon link">View on Play Store</a>
+        </div>
+
+        <div class="card project">
           <h3>Sticker Book Color Puzzle Game</h3>
           <p>Sticker placement puzzle with relaxing visuals.</p>
           <a class="button" href="https://play.google.com/store/apps/details?id=com.sticker.book.coloring.puzzle.asmr.game" target="_blank" rel="noopener"
@@ -782,9 +764,9 @@
         </div>
 
         <div class="card project">
-          <h3>ASMR Skincare Perfect Makeup</h3>
-          <p>A relaxing beauty game with step-by-step skincare and makeup, enhanced by soothing ASMR effects.</p>
-          <a class="button" href="https://play.google.com/store/apps/details?id=com.gs.asmr.skincare.relaxing.spa.games" target="_blank" rel="noopener"
+          <h3>Satisnow Perfect Tidy Game</h3>
+          <p>Winter-themed satisfying cleaning simulator.</p>
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.st.satisnow.perfect.tidy.asmr" target="_blank" rel="noopener"
              aria-label="View Satisnow Perfect Tidy Game on Play Store">View on Play Store</a>
         </div>
       </div>
@@ -793,7 +775,6 @@
     <section id="education">
       <div class="section-head">
         <h2>Education</h2>
-        <p class="sub">Academic background</p>
       </div>
       <div class="card">
         <p><strong>Bachelor in Computer Science</strong><br/>Virtual University of Pakistan (2021 – Present)</p>
@@ -803,7 +784,6 @@
     <section id="contact">
       <div class="section-head">
         <h2>Contact</h2>
-        <p class="sub">Let’s connect</p>
       </div>
 
       <div class="card">
