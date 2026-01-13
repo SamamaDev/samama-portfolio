@@ -8,7 +8,7 @@
   <!-- SEO -->
   <meta name="description" content="Samama Yaseen — 2D Unity Game Developer with 500K+ downloads. Mobile ASMR, casual & puzzle games." />
 
-  <!-- Open Graph (Better share preview, info same) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Samama Yaseen | 2D Unity Game Developer" />
   <meta property="og:description" content="2D Unity Game Developer with 500K+ downloads • ASMR • Casual • Puzzle Games" />
   <meta property="og:type" content="website" />
@@ -37,10 +37,14 @@
       --radius:18px;
       --radius2:24px;
       --max: 980px;
+
+      /* Sticky nav offset so headings stay visible on anchor click */
+      --nav-offset: 90px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family:'Poppins',sans-serif;
@@ -52,10 +56,13 @@
       overflow-x:hidden;
     }
 
-    /* Top ambient blobs (relaxing) */
+    /* Anchor scroll fix: headings won't hide behind sticky nav */
+    section{ scroll-margin-top: var(--nav-offset); }
+    section:target{ padding-top: 6px; }
+
+    /* Top ambient blobs */
     .blob{
       position:fixed;
-      inset:auto auto auto auto;
       width:520px;
       height:520px;
       filter: blur(60px);
@@ -168,8 +175,7 @@
       position:relative;
       overflow:hidden;
       border-radius: var(--radius2);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.40));
+      background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(255,255,255,.40));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       padding: 44px 22px;
@@ -300,11 +306,6 @@
       background: linear-gradient(90deg,var(--primary),var(--accent));
       opacity:.85;
     }
-    .sub{
-      color: var(--muted);
-      font-size: .92rem;
-      margin: 0;
-    }
 
     .card{
       background: var(--card);
@@ -315,7 +316,6 @@
       backdrop-filter: blur(12px);
     }
 
-    /* Lists */
     ul{ margin: 8px 0 0; padding-left: 20px; }
     li{ margin: 8px 0; color: rgba(15,23,42,.86); }
     p{ margin: 0; }
@@ -417,16 +417,23 @@
       font-size: .78rem;
       font-weight: 800;
       color: rgba(15,23,42,.82);
-      background: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.80);
       border: 1px solid var(--border);
       padding: 6px 10px;
       border-radius: 999px;
       box-shadow: var(--shadow2);
+      pointer-events:none;
     }
+    /* reserve space for tag => no overlap */
     .featured .project{
       position:relative;
       z-index:1;
+      padding-top: 42px;
     }
+    .featured .meta{
+      padding-right: 96px;
+    }
+
     .more-title{
       margin: 10px 0 12px;
       display:flex;
@@ -438,11 +445,6 @@
       margin:0;
       font-size: 1.05rem;
       color: rgba(15,23,42,.85);
-    }
-    .more-title .hint{
-      margin:0;
-      font-size: .86rem;
-      color: var(--muted);
     }
 
     /* Contact */
@@ -474,13 +476,23 @@
       font-size: .8rem;
       color: var(--muted);
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 6px;
     }
-    .contact-item .v{
-      font-weight: 700;
-      color: rgba(15,23,42,.88);
-      font-size: .95rem;
-      word-break: break-word;
+
+    /* NEW: whole card clickable */
+    a.contact-card{
+      text-decoration:none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    a.contact-card:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.75);
+    }
+    a.contact-card:active{
+      transform: translateY(0px);
     }
 
     footer{
@@ -495,7 +507,8 @@
     /* Responsive */
     @media (max-width: 900px){
       .hero-inner{ grid-template-columns: 1fr; }
-      .cta{ display:none; } /* keep nav clean */
+      .cta{ display:none; }
+      :root{ --nav-offset: 86px; }
     }
     @media (max-width: 680px){
       .grid{ grid-template-columns: 1fr; }
@@ -503,9 +516,20 @@
       .contact-grid{ grid-template-columns: 1fr; }
       .nav-inner{ justify-content:center; }
       .brand{ display:none; }
+      :root{ --nav-offset: 96px; }
+    }
+    @media (max-width: 420px){
+      .featured .featured-tag{
+        top: 12px;
+        right: 12px;
+        font-size: .74rem;
+        padding: 5px 9px;
+      }
+      .featured .project{ padding-top: 44px; }
+      .featured .meta{ padding-right: 0; }
+      :root{ --nav-offset: 104px; }
     }
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{ transition:none !important; animation:none !important; }
       html{ scroll-behavior:auto; }
@@ -544,9 +568,7 @@
       <div class="hero-inner">
         <div>
           <h1>Samama Yaseen</h1>
-          <p>
-            2D Unity Game Developer
-          </p>
+          <p>2D Unity Game Developer</p>
 
           <div class="hero-badges" aria-label="Highlights">
             <span class="badge"><span class="dot"></span> Unity • C#</span>
@@ -623,8 +645,6 @@
 
       <!-- Featured Projects -->
       <div class="featured-grid">
-
-        <!-- Featured 1: Home Fix -->
         <div class="card featured">
           <div class="featured-tag">Featured</div>
           <div class="project">
@@ -638,14 +658,11 @@
           </div>
         </div>
 
-        <!-- Featured 2: Cookzii -->
         <div class="card featured">
           <div class="featured-tag">Featured</div>
           <div class="project">
             <h3>Cookzii – Cooking ASMR Game</h3>
-            <p>
-              Cookzii is a relaxing 2D cooking game with satisfying ASMR interactions, focused on smooth, stress-free gameplay.
-            </p>
+            <p>Cookzii is a relaxing 2D cooking game with satisfying ASMR interactions, focused on smooth, stress-free gameplay.</p>
             <a class="button"
                href="https://play.google.com/store/apps/details?id=com.abtech.kitchendom.cozy"
                target="_blank"
@@ -656,7 +673,6 @@
           </div>
         </div>
 
-        <!-- Featured 3: Find Hidden Objects -->
         <div class="card featured">
           <div class="featured-tag">Featured</div>
           <div class="project">
@@ -667,7 +683,6 @@
           </div>
         </div>
 
-        <!-- Featured 4: Sort Puzzle: Goods Clash -->
         <div class="card featured">
           <div class="featured-tag">Featured</div>
           <div class="project">
@@ -677,10 +692,8 @@
                aria-label="View Sort Puzzle: Goods Clash on Play Store">View on Play Store</a>
           </div>
         </div>
-
       </div>
 
-      <!-- More Games -->
       <div class="more-title">
         <h3>More Games</h3>
       </div>
@@ -788,37 +801,48 @@
 
       <div class="card">
         <div class="contact-grid">
-          <div class="contact-item">
+
+          <!-- Phone: whole card clickable -->
+          <a class="contact-item contact-card" href="tel:+923104270525" aria-label="Call Samama Yaseen">
             <div class="icon" aria-hidden="true">📞</div>
             <div>
               <div class="k">Phone</div>
-              <div class="v">+92 310 4270525</div>
+              <div style="font-weight:700;color:rgba(15,23,42,.88);font-size:.95rem;">+92 310 4270525</div>
             </div>
-          </div>
+          </a>
 
+          <!-- Location: non-clickable (optional: make it maps link later) -->
           <div class="contact-item">
             <div class="icon" aria-hidden="true">📍</div>
             <div>
               <div class="k">Location</div>
-              <div class="v">Lahore, Pakistan</div>
+              <div style="font-weight:700;color:rgba(15,23,42,.88);font-size:.95rem;">Lahore, Pakistan</div>
             </div>
           </div>
 
-          <div class="contact-item">
+          <!-- Email: whole card clickable -->
+          <a class="contact-item contact-card" href="mailto:samama2341@gmail.com" aria-label="Email Samama Yaseen">
             <div class="icon" aria-hidden="true">✉️</div>
             <div>
               <div class="k">Email</div>
-              <div class="v">samama2341@gmail.com</div>
+              <div style="font-weight:700;color:rgba(15,23,42,.88);font-size:.95rem;">samama2341@gmail.com</div>
             </div>
-          </div>
+          </a>
 
-          <div class="contact-item">
+          <!-- LinkedIn: whole card clickable -->
+          <a class="contact-item contact-card"
+             href="https://www.linkedin.com/in/samama-yaseen-795125202"
+             target="_blank" rel="noopener"
+             aria-label="Open Samama Yaseen LinkedIn">
             <div class="icon" aria-hidden="true">🔗</div>
             <div>
               <div class="k">LinkedIn</div>
-              <div class="v">linkedin.com/in/samama-yaseen</div>
+              <div style="font-weight:700;color:rgba(15,23,42,.88);font-size:.95rem;">
+                www.linkedin.com/in/samama-yaseen-795125202
+              </div>
             </div>
-          </div>
+          </a>
+
         </div>
       </div>
     </section>
@@ -829,18 +853,30 @@
   </footer>
 
   <script>
-    // Reveal sections (lightweight)
+    // Reveal sections (tuned so big sections like Projects appear sooner)
     const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
+
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target); // pro polish: no re-trigger
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, {
+      threshold: 0.08,
+      rootMargin: "0px 0px -5% 0px"
+    });
 
     sections.forEach((sec) => observer.observe(sec));
+
+    // Ensure above-the-fold sections show immediately
+    requestAnimationFrame(() => {
+      sections.forEach((sec) => {
+        const r = sec.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.9) sec.classList.add("visible");
+      });
+    });
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
